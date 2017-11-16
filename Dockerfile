@@ -7,6 +7,10 @@ MAINTAINER  Yvonnick Esnault <yvonnick@esnau.lt>
 
 ENV DEBIAN_FRONTEND=noninteractive DEBCONF_NONINTERACTIVE_SEEN=true
 
+#RUN test -e /var/cache/apt/archives/lock && touch /var/cache/apt/archives/lock
+
+RUN mkdir -p /var/cache/apt/archives && touch /var/cache/apt/archives/lock
+
 # TODO: review this dependency list
 RUN     apt-get clean && apt-get update && apt-get install -y \
 	        git \
